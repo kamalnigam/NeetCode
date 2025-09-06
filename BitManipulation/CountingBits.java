@@ -1,19 +1,10 @@
-public class CountingBits {
-    public int[] countBits(int n) {
-        int[] res = new int[n + 1];
-        for (int i = 1; i <= n; i++) {
-            res[i] = res[i >> 1] + (i & 1);
+public class Solution {
+    public int hammingWeight(int n) {
+        int count = 0;
+        while (n > 0) {
+            n = n & (n - 1);  // removes the rightmost set bit
+            count++;
         }
-        return res;
-    }
-
-    // For testing
-    public static void main(String[] args) {
-        CountingBits solution = new CountingBits();
-        int n = 5;
-        int[] result = solution.countBits(n);
-        for (int r : result) {
-            System.out.print(r + " "); // Output: 0 1 1 2 1 2
-        }
+        return count;
     }
 }
